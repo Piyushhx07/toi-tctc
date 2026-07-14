@@ -270,28 +270,29 @@
 
           <form id="registrationForm" novalidate>
             <div class="form-row">
-              <div class="form-group" id="fnameGroup">
-                <label for="firstName">First Name <span class="required">*</span></label>
-                <input type="text" id="firstName" class="form-input" placeholder="Enter first name" required />
-                <p class="form-error">Please enter your first name</p>
+              <div class="form-group" id="studentNameGroup">
+                <label for="studentName">Student Name <span class="required">*</span></label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter student's name" required />
+                <p class="form-error">Please enter student name</p>
               </div>
-              <div class="form-group" id="lnameGroup">
-                <label for="lastName">Last Name <span class="required">*</span></label>
-                <input type="text" id="lastName" class="form-input" placeholder="Enter last name" required />
-                <p class="form-error">Please enter your last name</p>
+              <div class="form-group" id="parentNameGroup">
+                <label for="parentName">Parent's Name <span class="required">*</span></label>
+                <input type="text" id="parentName" class="form-input" placeholder="Father's name" required />
+                <p class="form-error">Please enter parent name</p>
               </div>
             </div>
 
-            <div class="form-group" id="emailGroup">
-              <label for="email">Email <span style="font-weight:400;color:rgba(255,255,255,0.3)">(optional)</span></label>
-              <input type="email" id="email" class="form-input" placeholder="you@example.com" />
-              <p class="form-error">Please enter a valid email</p>
-            </div>
-
-            <div class="form-group" id="phoneGroup">
-              <label for="phone">Phone Number <span class="required">*</span></label>
-              <input type="tel" id="phone" class="form-input" placeholder="+91 98765 43210" required />
-              <p class="form-error">Please enter a valid phone number</p>
+            <div class="form-row">
+              <div class="form-group" id="classGroup">
+                <label for="studentClass">Class <span class="required">*</span></label>
+                <input type="text" id="studentClass" class="form-input" placeholder="e.g., 10th A" required />
+                <p class="form-error">Please enter the class</p>
+              </div>
+              <div class="form-group" id="schoolGroup">
+                <label for="schoolName">School Name <span class="required">*</span></label>
+                <input type="text" id="schoolName" class="form-input" placeholder="Enter school name" required />
+                <p class="form-error">Please enter school name</p>
+              </div>
             </div>
 
             <div class="form-row">
@@ -300,22 +301,11 @@
                 <input type="text" id="city" class="form-input" placeholder="Your city" required />
                 <p class="form-error">Please enter your city</p>
               </div>
-              <div class="form-group" id="interestGroup">
-                <label for="interest">Area of Interest</label>
-                <select id="interest" class="form-input">
-                  <option value="">Select interest</option>
-                  <option value="water">Clean Water</option>
-                  <option value="trees">Tree Plantation</option>
-                  <option value="waste">Waste Management</option>
-                  <option value="awareness">Awareness Campaigns</option>
-                  <option value="other">Other</option>
-                </select>
+              <div class="form-group" id="stateGroup">
+                <label for="state">State <span class="required">*</span></label>
+                <input type="text" id="state" class="form-input" placeholder="Your state" required />
+                <p class="form-error">Please enter your state</p>
               </div>
-            </div>
-
-            <div class="form-group" id="messageGroup">
-              <label for="message">Message <span style="font-weight:400;color:rgba(255,255,255,0.3)">(optional)</span></label>
-              <textarea id="message" class="form-input" placeholder="Anything you'd like us to know..." rows="3"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-large form-submit-btn" id="submitBtn">

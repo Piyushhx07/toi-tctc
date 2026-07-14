@@ -33,7 +33,7 @@ const APPS_SCRIPT_URL = "";
  * Google Form fallback URL
  * Used when APPS_SCRIPT_URL is not set.
  */
-const GOOGLE_FORM_URL = "https://forms.gle/agLQWkGrm4EgQibD7";
+const GOOGLE_FORM_URL = "https://forms.gle/iarizn2PDbgThaSZ7";
 
 /**
  * Redirect URL after successful registration
@@ -246,50 +246,42 @@ function initRegistrationForm() {
     submitBtn.classList.add("is-loading");
 
     // Gather form data
-    const firstName = document.getElementById("firstName").value.trim();
-    const lastName = document.getElementById("lastName").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
+    const studentName = document.getElementById("studentName").value.trim();
+    const parentName = document.getElementById("parentName").value.trim();
+    const studentClass = document.getElementById("studentClass").value.trim();
+    const schoolName = document.getElementById("schoolName").value.trim();
     const city = document.getElementById("city").value.trim();
-    const interest = document.getElementById("interest").value;
-    const message = document.getElementById("message").value.trim();
+    const state = document.getElementById("state").value.trim();
 
-    // Generate fake email if not provided
-    const generatedEmail = email || generateFakeEmail(firstName);
+    // The direct action URL of the Google Form
+    const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSdaWFrbuUXFLfYSuJIyfXuB6UxK-tWER1S_PEwv2caJoSYPFg/formResponse";
+    
+    // Create FormData object matching the Google Form entry IDs
+    const formData = new URLSearchParams();
+    formData.append("entry.2005620554", studentName);
+    formData.append("entry.839337160", parentName);
+    formData.append("entry.260223400", studentClass);
+    formData.append("entry.1065046570", city);
+    formData.append("entry.1166974658", state);
+    formData.append("entry.462576747", schoolName);
 
-    // Generate fake password
-    const generatedPassword = generateFakePassword(firstName);
-
-    const data = {
-      firstName,
-      lastName,
-      email: generatedEmail,
-      phone,
-      city,
-      interest,
-      message,
-      generatedEmail,
-      generatedPassword,
-      timestamp: new Date().toISOString(),
-    };
-
-    // Try Google Apps Script submission first
-    if (APPS_SCRIPT_URL) {
-      try {
-        await submitToAppsScript(data);
-        submitBtn.classList.remove("is-loading");
-        showSuccessOverlay();
-        form.reset();
-        return;
-      } catch (err) {
-        console.warn("Apps Script submission failed, falling back to Google Form:", err);
-      }
+    try {
+      // Submit via fetch using no-cors mode to bypass CORS block
+      await fetch(GOOGLE_FORM_ACTION, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: formData.toString()
+      });
+    } catch (err) {
+      console.warn("Direct form submission had an error:", err);
     }
 
-    // Fallback: open Google Form in new tab
+    // Direct redirect to TCTC site regardless of the fetch response (since no-cors is opaque)
     submitBtn.classList.remove("is-loading");
-    window.open(GOOGLE_FORM_URL, "_blank", "noopener");
-    showSuccessOverlay();
+    window.location.href = TCTC_REDIRECT_URL;
     form.reset();
   });
 }
@@ -301,14 +293,15 @@ function initRegistrationForm() {
 function validateForm() {
   let isValid = true;
   const fields = [
-    { id: "firstName", groupId: "fnameGroup", required: true },
-    { id: "lastName", groupId: "lnameGroup", required: true },
-    { id: "email", groupId: "emailGroup", required: false, type: "email" },
-    { id: "phone", groupId: "phoneGroup", required: true, type: "phone" },
+    { id: "studentName", groupId: "studentNameGroup", required: true },
+    { id: "parentName", groupId: "parentNameGroup", required: true },
+    { id: "studentClass", groupId: "classGroup", required: true },
+    { id: "schoolName", groupId: "schoolGroup", required: true },
     { id: "city", groupId: "cityGroup", required: true },
+    { id: "state", groupId: "stateGroup", required: true },
   ];
 
-  fields.forEach(({ id, groupId, required, type }) => {
+  fields.forEach(({ id, groupId, required }) => {
     const input = document.getElementById(id);
     const group = document.getElementById(groupId);
     const value = input.value.trim();
@@ -323,27 +316,9 @@ function validateForm() {
       isValid = false;
       return;
     }
-
-    if (type === "email" && value && !isValidEmail(value)) {
-      group.classList.add("has-error");
-      input.classList.add("error");
-      isValid = false;
-      return;
-    }
-
-    if (type === "phone" && value && value.replace(/[\s\-\+\(\)]/g, "").length < 8) {
-      group.classList.add("has-error");
-      input.classList.add("error");
-      isValid = false;
-      return;
-    }
   });
 
   return isValid;
-}
-
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 // ==========================================
