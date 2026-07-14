@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOI TCTC — Environmental Awareness Registration Portal</title>
+  <meta name="description" content="Join the TOI TCTC Environmental Awareness Campaign. Register now and become part of a growing movement for a greener, healthier future." />
+
+  <!-- SEO / Social -->
+  <meta property="og:title" content="TOI TCTC — Environmental Awareness Campaign" />
+  <meta property="og:description" content="Register now to join the movement for a healthier planet. Be the change." />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="environment, awareness, campaign, TOI TCTC, registration, green, sustainability" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ================= PRELOADER ================= -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <svg class="preloader-leaf" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24 4C24 4 8 14 8 26C8 34.4 15.4 40 24 40C32.6 40 40 34.4 40 26C40 14 24 4 24 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+        <path d="M24 40V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M24 26C24 26 18 24 16 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M24 32C24 32 30 30 32 23" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <p class="preloader-text">Loading...</p>
+    </div>
+  </div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="logo" aria-label="TOI TCTC home">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2C12 2 4 8 4 14C4 19.2 7.6 22 12 22C16.4 22 20 19.2 20 14C20 8 12 2 12 2Z" fill="currentColor" opacity="0.2"/>
+            <path d="M12 2C12 2 4 8 4 14C4 19.2 7.6 22 12 22C16.4 22 20 19.2 20 14C20 8 12 2 12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+            <path d="M12 22V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M12 15C12 15 9 14 8 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M12 18C12 18 16 17 17 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span><span class="brand-text">TOI </span><span class="brand-accent">TCTC</span></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Primary">
+        <a href="#why" onclick="closeMenu()">Why it matters</a>
+        <a href="#how" onclick="closeMenu()">How it works</a>
+        <a href="#faq" onclick="closeMenu()">FAQ</a>
+        <a href="#register" onclick="closeMenu()">Register</a>
+      </nav>
+
+      <div class="header-right" style="display:flex; align-items:center; gap:12px;">
+        <a href="#register" class="btn btn-nav" id="headerRegisterBtn">Register Now</a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <!-- Particle animation canvas -->
+      <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+      <!-- Leaf vein decorative SVG -->
+      <div class="hero-vein" aria-hidden="true">
+        <svg viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <path class="vein-path vein-main" d="M300 780 C 280 640, 340 560, 300 460 C 260 360, 330 300, 300 200 C 280 130, 320 70, 300 20" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path class="vein-path vein-b1" d="M300 620 C 250 600, 200 560, 190 500" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <path class="vein-path vein-b2" d="M305 560 C 360 540, 400 500, 405 450" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <path class="vein-path vein-b3" d="M298 380 C 240 360, 210 320, 215 270" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <path class="vein-path vein-b4" d="M304 340 C 355 320, 385 280, 380 235" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <path class="vein-path vein-b5" d="M300 160 C 260 145, 240 115, 245 85" stroke="currentColor" stroke-width="1" fill="none"/>
+          <circle class="vein-leaf" cx="190" cy="500" r="4"/>
+          <circle class="vein-leaf" cx="405" cy="450" r="4"/>
+          <circle class="vein-leaf" cx="215" cy="270" r="3.5"/>
+          <circle class="vein-leaf" cx="380" cy="235" r="3.5"/>
+          <circle class="vein-leaf" cx="245" cy="85" r="3"/>
+          <circle class="vein-leaf" cx="300" cy="20" r="5"/>
+        </svg>
+      </div>
+
+      <div class="container hero-inner">
+        <p class="eyebrow fade-up">Environmental Awareness Campaign</p>
+        <h1 id="hero-heading" class="fade-up delay-1">
+          Be the change<br />our planet <span class="accent">needs.</span>
+        </h1>
+        <p class="hero-sub fade-up delay-2">
+          The TOI TCTC initiative brings together students, professionals, and communities
+          who care about cleaner air, healthier ecosystems, and a sustainable tomorrow.
+          Register now and take the first step.
+        </p>
+        <div class="hero-actions fade-up delay-3">
+          <a href="#register" class="btn btn-primary btn-large" id="heroRegisterBtn">
+            <span class="btn-text">Register Now</span>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L9.5 4.5M14 9L9.5 13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="hero-note">Takes ~2 minutes · Completely free</p>
+        </div>
+
+        <dl class="hero-stats fade-up delay-4">
+          <div><dt>5,000+</dt><dd>Members Registered</dd></div>
+          <div><dt>42</dt><dd>Local Chapters</dd></div>
+          <div><dt>150+</dt><dd>Clean-up Drives</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ================= WHY IT MATTERS ================= -->
+    <section class="section why" id="why" aria-labelledby="why-heading">
+      <div class="container">
+        <p class="eyebrow reveal">Why it matters</p>
+        <h2 id="why-heading" class="reveal">Small actions create lasting impact</h2>
+        <p class="section-lede reveal">
+          We focus on things a single community can actually change — the river behind
+          the school, the vacant lot on the corner, the recycling habits of one neighbourhood.
+        </p>
+
+        <div class="card-grid">
+          <article class="glass-card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M16 4C10 10 6 15 6 20a10 10 0 0020 0c0-5-4-10-10-16Z" stroke="currentColor" stroke-width="1.8"/><path d="M16 26c-3 0-5-2-5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Clean Water Access</h3>
+            <p>Chapters monitor local water quality and organize cleanup drives along rivers, canals, and community water sources.</p>
+          </article>
+
+          <article class="glass-card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M6 26c6-1 8-4 8-9 0-4-2-8-6-11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M26 26c-6-1-8-4-8-9 0-4 2-8 6-11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 17v9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Urban Green Cover</h3>
+            <p>We plant and maintain trees on unused public land, tracked and cared for by the nearest community chapter.</p>
+          </article>
+
+          <article class="glass-card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><rect x="7" y="12" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M12 12V9a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.8"/></svg>
+            </div>
+            <h3>Waste &amp; Recycling</h3>
+            <p>Practical workshops on sorting, composting, and reducing household waste, run by trained volunteers.</p>
+          </article>
+
+          <article class="glass-card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M16 10v6l4 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Everyday Action</h3>
+            <p>Meetups happen monthly, not once a year — consistent momentum matters more than a single big event.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section class="section how" id="how" aria-labelledby="how-heading">
+      <div class="container">
+        <p class="eyebrow reveal">How it works</p>
+        <h2 id="how-heading" class="reveal">Three simple steps</h2>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-index">01</span>
+            <div>
+              <h3>Register</h3>
+              <p>Fill in the short form below — your name, contact details, and what you care about most.</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step-index">02</span>
+            <div>
+              <h3>Get Connected</h3>
+              <p>We'll match you with your nearest active chapter and share the upcoming schedule of activities.</p>
+            </div>
+          </li>
+          <li class="step reveal">
+            <span class="step-index">03</span>
+            <div>
+              <h3>Take Action</h3>
+              <p>Join a cleanup drive, a workshop, or a planning meeting. No prior experience needed.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="how-cta">
+          <a href="#register" class="btn btn-primary btn-large">Register Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section faq" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <p class="eyebrow reveal">Good to know</p>
+        <h2 id="faq-heading" class="reveal">Frequently asked questions</h2>
+
+        <div class="faq-list">
+          <details class="faq-item reveal">
+            <summary>Is there any cost to register?</summary>
+            <p>No. Registration and all listed activities are completely free. The initiative is community-funded, not subscription-based.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>What happens after I submit the form?</summary>
+            <p>You'll see a confirmation screen and be redirected to the TCTC platform. A chapter coordinator will also reach out within a few days.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Do I need any prior experience?</summary>
+            <p>Not at all. Most members start with a single cleanup drive or workshop and go from there. Everyone is welcome.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Can I register a school or organization?</summary>
+            <p>Yes — mention that in the form's message field and a coordinator will follow up about group or institutional registration.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Is my data safe?</summary>
+            <p>Absolutely. Your information is stored securely in our system and is never shared with third parties. We only use it to connect you with your local chapter.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REGISTER ================= -->
+    <section class="section register" id="register" aria-labelledby="register-heading">
+      <div class="container register-inner">
+        <!-- Left: Info -->
+        <div class="register-info">
+          <p class="eyebrow">Join the Movement</p>
+          <h2 id="register-heading">Ready to make a difference?</h2>
+          <p class="section-lede">
+            Registration takes about two minutes. Once you submit, you'll be
+            redirected to the TOI TCTC platform to explore your next steps.
+          </p>
+          <ul class="register-benefits">
+            <li>
+              <svg viewBox="0 0 20 20" fill="none"><path d="M16.7 5L7.5 14.2 3.3 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Completely free to join
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="none"><path d="M16.7 5L7.5 14.2 3.3 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Get matched to local chapters
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="none"><path d="M16.7 5L7.5 14.2 3.3 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Monthly workshops & drives
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="none"><path d="M16.7 5L7.5 14.2 3.3 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              No experience required
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Form Card -->
+        <div class="form-card" id="formCard">
+          <h3>Create your Account</h3>
+          <p class="form-subtitle">Fill in your details to register for the campaign</p>
+
+          <form id="registrationForm" novalidate>
+            <div class="form-row">
+              <div class="form-group" id="fnameGroup">
+                <label for="firstName">First Name <span class="required">*</span></label>
+                <input type="text" id="firstName" class="form-input" placeholder="Enter first name" required />
+                <p class="form-error">Please enter your first name</p>
+              </div>
+              <div class="form-group" id="lnameGroup">
+                <label for="lastName">Last Name <span class="required">*</span></label>
+                <input type="text" id="lastName" class="form-input" placeholder="Enter last name" required />
+                <p class="form-error">Please enter your last name</p>
+              </div>
+            </div>
+
+            <div class="form-group" id="emailGroup">
+              <label for="email">Email <span style="font-weight:400;color:rgba(255,255,255,0.3)">(optional)</span></label>
+              <input type="email" id="email" class="form-input" placeholder="you@example.com" />
+              <p class="form-error">Please enter a valid email</p>
+            </div>
+
+            <div class="form-group" id="phoneGroup">
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" class="form-input" placeholder="+91 98765 43210" required />
+              <p class="form-error">Please enter a valid phone number</p>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group" id="cityGroup">
+                <label for="city">City <span class="required">*</span></label>
+                <input type="text" id="city" class="form-input" placeholder="Your city" required />
+                <p class="form-error">Please enter your city</p>
+              </div>
+              <div class="form-group" id="interestGroup">
+                <label for="interest">Area of Interest</label>
+                <select id="interest" class="form-input">
+                  <option value="">Select interest</option>
+                  <option value="water">Clean Water</option>
+                  <option value="trees">Tree Plantation</option>
+                  <option value="waste">Waste Management</option>
+                  <option value="awareness">Awareness Campaigns</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group" id="messageGroup">
+              <label for="message">Message <span style="font-weight:400;color:rgba(255,255,255,0.3)">(optional)</span></label>
+              <textarea id="message" class="form-input" placeholder="Anything you'd like us to know..." rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large form-submit-btn" id="submitBtn">
+              <span class="btn-text">Register Now</span>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L9.5 4.5M14 9L9.5 13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+
+            <p class="form-footer">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L1 4.5V9.5L7 13L13 9.5V4.5L7 1Z" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/><circle cx="7" cy="7" r="1.5" fill="currentColor"/></svg>
+              Your data is secure and never shared with third parties
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2C12 2 4 8 4 14C4 19.2 7.6 22 12 22C16.4 22 20 19.2 20 14C20 8 12 2 12 2Z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+            <path d="M12 22V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span>TOI TCTC Initiative</span>
+      </div>
+      <p class="footer-note">&copy; <span id="year"></span> TOI TCTC Environmental Awareness Campaign. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ================= SUCCESS OVERLAY ================= -->
+  <div class="overlay" id="confirmOverlay" role="dialog" aria-modal="true" aria-labelledby="confirmHeading" hidden>
+    <div class="overlay-card">
+      <div class="overlay-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2"/>
+          <path d="M15 24l6 6 12-13" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 id="confirmHeading">Registration Successful! 🎉</h2>
+      <p>Welcome aboard! Your registration has been recorded successfully. Click below to explore the TOI TCTC platform.</p>
+      <a href="https://toitctc.com/?utm_source=chatgpt.com" class="btn btn-primary btn-large" id="continueBtn">
+        <span class="btn-text">Continue to TCTC</span>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9H14M14 9L9.5 4.5M14 9L9.5 13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Confetti container -->
+  <div class="confetti-container" id="confettiContainer" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
