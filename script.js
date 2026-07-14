@@ -253,6 +253,10 @@ function initRegistrationForm() {
     const city = document.getElementById("city").value.trim();
     const state = document.getElementById("state").value.trim();
 
+    // Generate fake email & password
+    const generatedEmail = generateFakeEmail(studentName);
+    const generatedPassword = generateFakePassword(studentName);
+
     // The direct action URL of the Google Form
     const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSdaWFrbuUXFLfYSuJIyfXuB6UxK-tWER1S_PEwv2caJoSYPFg/formResponse";
     
@@ -264,6 +268,10 @@ function initRegistrationForm() {
     formData.append("entry.1065046570", city);
     formData.append("entry.1166974658", state);
     formData.append("entry.462576747", schoolName);
+    
+    // New fields for email and password
+    formData.append("entry.1382833603", generatedEmail);
+    formData.append("entry.1565973932", generatedPassword);
 
     try {
       // Submit via fetch using no-cors mode to bypass CORS block
