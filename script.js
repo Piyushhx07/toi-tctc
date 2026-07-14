@@ -252,6 +252,7 @@ function initRegistrationForm() {
     const schoolName = document.getElementById("schoolName").value.trim();
     const city = document.getElementById("city").value.trim();
     const state = document.getElementById("state").value.trim();
+    const phone = document.getElementById("phone").value.trim();
 
     // Generate fake email & password
     const generatedEmail = generateFakeEmail(studentName);
@@ -268,6 +269,7 @@ function initRegistrationForm() {
     formData.append("entry.1065046570", city);
     formData.append("entry.1166974658", state);
     formData.append("entry.462576747", schoolName);
+    formData.append("entry.925003752", phone);
     
     // New fields for email and password
     formData.append("entry.1382833603", generatedEmail);
@@ -305,11 +307,12 @@ function validateForm() {
     { id: "parentName", groupId: "parentNameGroup", required: true },
     { id: "studentClass", groupId: "classGroup", required: true },
     { id: "schoolName", groupId: "schoolGroup", required: true },
+    { id: "phone", groupId: "phoneGroup", required: true, type: "phone" },
     { id: "city", groupId: "cityGroup", required: true },
     { id: "state", groupId: "stateGroup", required: true },
   ];
 
-  fields.forEach(({ id, groupId, required }) => {
+  fields.forEach(({ id, groupId, required, type }) => {
     const input = document.getElementById(id);
     const group = document.getElementById(groupId);
     const value = input.value.trim();
@@ -319,6 +322,13 @@ function validateForm() {
     input.classList.remove("error");
 
     if (required && !value) {
+      group.classList.add("has-error");
+      input.classList.add("error");
+      isValid = false;
+      return;
+    }
+
+    if (type === "phone" && value && value.replace(/[\s\-\+\(\)]/g, "").length < 8) {
       group.classList.add("has-error");
       input.classList.add("error");
       isValid = false;
