@@ -350,8 +350,10 @@ function validateForm() {
  */
 function generateFakeEmail(firstName) {
   const name = firstName.toLowerCase().replace(/[^a-z]/g, "") || "user";
-  const num = Math.floor(Math.random() * 900) + 100; // 100-999
-  return `${name}${num}@gmail.com`;
+  const num = Math.floor(Math.random() * 900) + 100;
+  const domains = ["gmail.com", "icloud.com"];
+  const domain = domains[Math.floor(Math.random() * domains.length)];
+  return `${name}${num}@${domain}`;
 }
 
 /**
